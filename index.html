@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side fix content</title>
+  
+</head>
+<body>
+  <style>
+    html {
+      height: 1.618;
+    }
+    body {
+        font-family: sans-serif;
+    }
+    .bg {
+      background: #ffffff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100vh;
+      z-index: 1;
+    } 
+    .section {
+      display: flex; 
+      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+    }
+    /* .section > * {
+      width: 60%; 
+    } */
+    .section-img {
+      position: relative;
+      display: flex;
+      width: 70%;
+    }
+    .section-img-inner {
+      height: 100vh;
+      position: fixed;
+      left: 10%;
+      width: 60%;
+      top: 0;
+      mix-blend-mode: multiply;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      filter: blur(30px);
+      opacity: 0;
+      background-position: 50% 40%;
+      transition: .6s ease, opacity .6s ease, background-position .8s ease;
+    }
+    .section-body {
+      display: flex;
+      align-items: center;
+      width: 30%;
+    }
+    .section-text {
+        padding-left:1vw;
+        padding-right:10vw;
+  
+    }
+    .section.active .section-img-inner {
+      opacity: 1;
+      background-position: 50% 50%;
+      filter: blur(0);
+    }
+    h2 {
+      font-size: 3vw;
+      margin-bottom: 0.5em;
+      margin-top: 0;
+    }
+
+  </style>
+  <div class="bg"></div>
+  <div class="section">
+    <div class="section-img">
+      <div class="section-img-inner" >
+        <h2>O G20</h2>
+
+        <iframe seamless src= "https://hong-kong-districts-info.github.io/widgets/MapHKDistricts.html", width="500", height="500"></iframe>
+      </div>
+
+    </div>
+    <div class="section-body">
+      <div class="section-text">
+        <h2>O G20</h2>
+        <p> 
+        O G20, ou Grupo dos Vinte, é uma organização internacional composta por 19 países e a União Europeia. Foi criado no final da década de 1990 como uma resposta à necessidade de maior cooperação econômica global. 
+        Os membros do G20 representam as maiores economias do mundo e têm um peso significativo no cenário econômico global. Juntos, eles respondem por cerca de 85% do produto interno bruto (PIB) mundial.
+        </p>
+        <p>
+        O G20 desempenha um papel fundamental na governança econômica global, abordando questões como política fiscal, comércio internacional, desenvolvimento sustentável e estabilidade financeira. 
+        Sua formação reflete a importância das economias emergentes, como o Brasil, Índia, China e África do Sul, que desempenham um papel cada vez mais crucial na economia mundial.  
+        </p>   
+      </div>
+    </div> 
+  </div>  
+
+  <div class="section">
+    <div class="section-img">
+      <div class="section-img-inner" style="background-image: url(./IMG/IDH_2010.png);"></div>
+    </div>
+    <div class="section-body">
+      <div class="section-text">
+        <h2>Sul-global no G20</h2>
+        <p>
+            Os países do sul global, também conhecidos como economias emergentes, têm experimentado um crescimento econômico notável nas últimas décadas. 
+            Isso se reflete na sua crescente influência dentro do G20. Na verdade, muitos desses países se tornaram atores-chave no cenário econômico mundial.
+        </p>
+        <p>
+            China e Índia, por exemplo, emergiram como duas das economias mais poderosas do mundo, desempenhando um papel crucial na dinâmica do G20. 
+            Suas taxas de crescimento impressionantes, expansão industrial e demografia favorável contribuíram para sua ascensão.
+        </p> 
+      </div>
+    </div>
+  </div>
+
+    <div class="section">
+      <div class="section-img">
+        <div class="section-img-inner" style="background-image: url(./IMG/PNADCM_Taxa_Desocupacao.png);"></div>
+      </div>
+      <div class="section-body">
+        <div class="section-text">
+          <h2>Brasil no G20</h2>
+          <p>
+            O Brasil é um membro importante do G20 e representa uma das economias mais significativas entre os países do sul global. No entanto, o país enfrentou desafios econômicos recentes, incluindo recessões e instabilidade política. 
+            Apesar desses obstáculos, o Brasil continua desempenhando um papel relevante nas discussões do G20.
+          </p>
+          <p>
+            O país possui recursos naturais abundantes, uma grande população e um setor agrícola forte. O desafio é aproveitar seu potencial econômico de maneira eficaz, superar desigualdades e promover reformas estruturais.
+            Em resumo, o G20 é uma plataforma crucial para a cooperação econômica global, e os países do sul global, incluindo o Brasil, desempenham um papel cada vez mais importante na formação do cenário econômico mundial.
+          </p> 
+        </div>
+      </div>
+    </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(window).scroll(function(){
+      let $window = $(window),
+          $body = $('body'),   
+          $section = $('.section');
+      let scroll = $window.scrollTop() + ($window.height() / 3);
+      $section.each(function(){ 
+        if($(this).position().top <= scroll && $(this).position().top + $(this).height() > scroll){
+          $body.removeClass(function (index, css){
+            return (css.match (/(^|\s)color-\s+/g) || [].join(' '));
+          });
+          $('.section').removeClass('active');
+          $(this).addClass('active');
+        }
+      });
+    }).scroll();
+</script>
+</body>
+</html>
